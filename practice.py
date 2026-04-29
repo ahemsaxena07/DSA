@@ -3,53 +3,85 @@ class Node:
         self.value = value
         self.next = None
 
-class Linkedlist:
+class LinkedList:
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
         self.length = 1
 
+    def append(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+        return True 
+    
     def print_list(self):
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
-    
-    def append(self, value):
-        new_node = Node(value)
-        self.tail.next = new_node
-        self.tail = new_node
-        self.length += 1 
 
-    def pop(self, value):
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.head 
+        pre = self.head 
+        while(temp.next):
+            pre = temp 
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None 
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp
+    
+    def prepand(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+    
+    def popfirst(self):
         if self.length == 0:
             return None
         temp = self.head
-        pre = self.head
-        while(temp.next):
-            pre = temp
-            temp = temp.next
-        self.tail = pre
-        self.tail.next = None
+        self.head = self.head.next
+        temp.next = None
         self.length -= 1
         if self.length == 0:
-            self.head = None 
             self.tail = None
-        return temp 
-
+        return temp
+    
     def get(self, index):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             return None 
-        temp = self.head
+        temp = self.head 
         for _ in range(index):
             temp = temp.next
         return temp.value
+
     
-my_list = Linkedlist(0)
-my_list.append(1)
+    
+
+my_list = LinkedList(0)
+
+my_list.append(1) 
 my_list.append(2)
-my_list.append(3)
-my_list.pop(2)
+my_list.prepand(3)
+my_list.pop()
+my_list.popfirst()
+my_list.get(0)
 my_list.print_list()
-print(my_list.get(2))
