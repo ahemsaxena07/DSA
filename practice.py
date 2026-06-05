@@ -1,3 +1,407 @@
+# # # # # # # # # # # # # # # # # class Node:
+# # # # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # # # #         self.value = value
+# # # # # # # # # # # # # # # # #         self.next = None
+
+# # # # # # # # # # # # # # # # # class LinkedList:
+# # # # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # # #         self.head = new_node
+# # # # # # # # # # # # # # # # #         self.tail = new_node
+# # # # # # # # # # # # # # # # #         self.length = 1
+
+# # # # # # # # # # # # # # # # #     def append(self, value):
+# # # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # # #             self.tail.next = new_node
+# # # # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # # # #         return True 
+    
+# # # # # # # # # # # # # # # # #     def print_list(self):
+# # # # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # # # #         while temp is not None:
+# # # # # # # # # # # # # # # # #             print(temp.value)
+# # # # # # # # # # # # # # # # #             temp = temp.next
+
+# # # # # # # # # # # # # # # # #     def pop(self):
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # # # # #         pre = self.head 
+# # # # # # # # # # # # # # # # #         while(temp.next):
+# # # # # # # # # # # # # # # # #             pre = temp 
+# # # # # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # # # # #         self.tail = pre
+# # # # # # # # # # # # # # # # #         self.tail.next = None 
+# # # # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             self.head = None
+# # # # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # # # #     def prepand(self, value):
+# # # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # # #             new_node.next = self.head
+# # # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # # # #         return True
+    
+# # # # # # # # # # # # # # # # #     def popfirst(self):
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # # # #         self.head = self.head.next
+# # # # # # # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # # # #     def get(self, index):
+# # # # # # # # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # # # # # # # #             return None 
+# # # # # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # # # # #         for _ in range(index):
+# # # # # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # # # # #         return temp
+
+    
+    
+
+# # # # # # # # # # # # # # # # # my_list = LinkedList(0)
+
+# # # # # # # # # # # # # # # # # my_list.append(1) 
+# # # # # # # # # # # # # # # # # my_list.append(2)
+# # # # # # # # # # # # # # # # # my_list.prepand(3)
+# # # # # # # # # # # # # # # # # my_list.pop()
+# # # # # # # # # # # # # # # # # my_list.popfirst()
+# # # # # # # # # # # # # # # # # my_list.print_list()
+
+
+# # # # # # # # # # # # # # # # class Node:
+# # # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # # #         self.value = value
+# # # # # # # # # # # # # # # #         self.next = None
+
+# # # # # # # # # # # # # # # # class LinkedList:
+# # # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # #         self.head = new_node
+# # # # # # # # # # # # # # # #         self.tail = new_node
+# # # # # # # # # # # # # # # #         self.length = 1
+
+# # # # # # # # # # # # # # # #     def append(self, value):
+# # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # #             self.tail.next = new_node
+# # # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # # #         return True
+    
+# # # # # # # # # # # # # # # #     def print_list(self):
+# # # # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # # # #         while temp is not None:
+# # # # # # # # # # # # # # # #             print(temp.value)
+# # # # # # # # # # # # # # # #             temp = temp.next
+
+# # # # # # # # # # # # # # # #     def pop(self):
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # # # #         pre = self.head 
+# # # # # # # # # # # # # # # #         while(temp.next):
+# # # # # # # # # # # # # # # #             pre = temp 
+# # # # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # # # #         self.tail = pre 
+# # # # # # # # # # # # # # # #         self.tail.next = None
+# # # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             self.head = None
+# # # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # # #     def prepand(self, value):
+# # # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # #             new_node.next = self.head
+# # # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # # #         return True 
+    
+# # # # # # # # # # # # # # # #     def popfirst(self):
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # # #         self.head = self.head.next
+# # # # # # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # # #     def get(self, index):
+# # # # # # # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # # #         for _ in range(index):
+# # # # # # # # # # # # # # # #             temp = temp.next 
+# # # # # # # # # # # # # # # #         return temp 
+
+# # # # # # # # # # # # # # # class Node:
+# # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # #         self.value = value
+# # # # # # # # # # # # # # #         self.next = None
+
+# # # # # # # # # # # # # # # class LinkedList:
+# # # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # #         self.head = new_node
+# # # # # # # # # # # # # # #         self.tail = new_node
+# # # # # # # # # # # # # # #         self.length = 1
+
+# # # # # # # # # # # # # # #     def append(self, value):
+# # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # #             self.tail.next = new_node
+# # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # #         return True
+    
+
+# # # # # # # # # # # # # # #     def print_list(self):
+# # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # #         while temp is not None:
+# # # # # # # # # # # # # # #             print(temp.value)
+# # # # # # # # # # # # # # #             temp = temp.next 
+
+# # # # # # # # # # # # # # #     def pop(self):
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # #         pre = self.head
+# # # # # # # # # # # # # # #         while(temp.next):
+# # # # # # # # # # # # # # #             pre = temp
+# # # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # # #         self.tail = pre
+# # # # # # # # # # # # # # #         self.tail.next = None
+# # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             self.head = None
+# # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # #     def prepand(self, value):
+# # # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # #             new_node.next = self.head
+# # # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # # #         return True 
+    
+# # # # # # # # # # # # # # #     def firstpop(self):
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # # #         self.head = self.head.next
+# # # # # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # #     def get(self, index):
+# # # # # # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # # #         for _ in range(index):
+# # # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # # #         return temp
+    
+# # # # # # # # # # # # # # #     def set(self, index, value):
+# # # # # # # # # # # # # # #         temp = self.get(index)
+# # # # # # # # # # # # # # #         if temp:
+# # # # # # # # # # # # # # #             temp.value = value
+# # # # # # # # # # # # # # #             return True
+# # # # # # # # # # # # # # #         return False
+
+
+# # # # # # # # # # # # # # class Node:
+# # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # #         self.value = value
+# # # # # # # # # # # # # #         self.next = None
+
+# # # # # # # # # # # # # # class LinkedList:
+# # # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # #         self.head = new_node
+# # # # # # # # # # # # # #         self.tail = new_node
+# # # # # # # # # # # # # #         self.length = 1
+
+# # # # # # # # # # # # # #     def append(self, value):
+# # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # #             self.tail.next = new_node
+# # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # #         return True
+    
+# # # # # # # # # # # # # #     def print_list(self):
+# # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # #         while temp is not None:
+# # # # # # # # # # # # # #             print(temp.value)
+# # # # # # # # # # # # # #             temp = temp.next
+
+# # # # # # # # # # # # # #     def pop(self):
+# # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # #         pre = self.head
+# # # # # # # # # # # # # #         while(temp.next):
+# # # # # # # # # # # # # #             pre = temp
+# # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # #         self.tail = pre
+# # # # # # # # # # # # # #         self.tail.next = None
+# # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # #             self.head = None
+# # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # #         return temp 
+    
+# # # # # # # # # # # # # #     def prepand(self, value):
+# # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # #         if self.length == 0: 
+# # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # #             new_node.next = self.head
+# # # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # #         return True
+    
+# # # # # # # # # # # # # #     def popfirst(self):
+# # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # # # #         self.head = self.head.next
+# # # # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # # #         return temp
+
+# # # # # # # # # # # # # #     def get(self, index):
+# # # # # # # # # # # # # #         if index< 0 or index > self.length:
+# # # # # # # # # # # # # #             return None
+# # # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # # #         for _ in range(index):
+# # # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # # #         return temp
+
+# # # # # # # # # # # # # #     def insert(self, index, value):
+# # # # # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # # # # #             return False
+# # # # # # # # # # # # # #         if index == 0:
+# # # # # # # # # # # # # #             return self.prepand(value)
+# # # # # # # # # # # # # #         if index == self.length:
+# # # # # # # # # # # # # #             return self.append(value)
+# # # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # # #         temp = self.get(index - 1)
+# # # # # # # # # # # # # #         new_node.next = temp
+# # # # # # # # # # # # # #         temp = temp.next
+# # # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # # #         return True
+
+
+# # # # # # # # # # # # # class Node:
+# # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # #         self.value = value
+# # # # # # # # # # # # #         self.next = None
+
+# # # # # # # # # # # # # class LinkedList:
+# # # # # # # # # # # # #     def __init__(self, value):
+# # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # #         self.head = new_node
+# # # # # # # # # # # # #         self.tail = new_node
+# # # # # # # # # # # # #         self.length = 1
+
+# # # # # # # # # # # # #     def append(self, value):
+# # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # #         else:
+# # # # # # # # # # # # #             self.tail.next = new_node
+# # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # #         return True
+    
+# # # # # # # # # # # # #     def print_list(self):
+# # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # #         while temp is not None:
+# # # # # # # # # # # # #             print(temp.value)
+# # # # # # # # # # # # #             temp = temp.next
+
+# # # # # # # # # # # # #     def pop(self, value):
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             return None
+# # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # #         pre = self.head
+# # # # # # # # # # # # #         while(temp.next):
+# # # # # # # # # # # # #             pre = temp
+# # # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # # #         self.tail = pre
+# # # # # # # # # # # # #         self.tail.next = None
+# # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             self.head = None
+# # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # #         return temp 
+    
+# # # # # # # # # # # # #     def prepand(self, value):
+# # # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # #             self.tail = new_node
+# # # # # # # # # # # # #         else:
+# # # # # # # # # # # # #             new_node.next = self.head
+# # # # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # # #         return True 
+    
+# # # # # # # # # # # # #     def firstpop(self):
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             return None
+# # # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # # #         self.head = self.head.next
+# # # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # # #         return temp
+    
 # # # # # # # # # # # # class Node:
 # # # # # # # # # # # #     def __init__(self, value):
 # # # # # # # # # # # #         self.value = value
@@ -19,7 +423,7 @@
 # # # # # # # # # # # #             self.tail.next = new_node
 # # # # # # # # # # # #             self.tail = new_node
 # # # # # # # # # # # #         self.length += 1
-# # # # # # # # # # # #         return True 
+# # # # # # # # # # # #         return True
     
 # # # # # # # # # # # #     def print_list(self):
 # # # # # # # # # # # #         temp = self.head
@@ -30,17 +434,17 @@
 # # # # # # # # # # # #     def pop(self):
 # # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # # #             return None
-# # # # # # # # # # # #         temp = self.head 
-# # # # # # # # # # # #         pre = self.head 
+# # # # # # # # # # # #         temp = self.head
+# # # # # # # # # # # #         pre = self.head
 # # # # # # # # # # # #         while(temp.next):
-# # # # # # # # # # # #             pre = temp 
+# # # # # # # # # # # #             pre = temp
 # # # # # # # # # # # #             temp = temp.next
 # # # # # # # # # # # #         self.tail = pre
-# # # # # # # # # # # #         self.tail.next = None 
-# # # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # # #         self.tail.next = None
 # # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # # #             self.head = None
 # # # # # # # # # # # #             self.tail = None
+# # # # # # # # # # # #         self.length -= 1
 # # # # # # # # # # # #         return temp
     
 # # # # # # # # # # # #     def prepand(self, value):
@@ -54,36 +458,45 @@
 # # # # # # # # # # # #         self.length += 1
 # # # # # # # # # # # #         return True
     
-# # # # # # # # # # # #     def popfirst(self):
-# # # # # # # # # # # #         if self.length == 0:
+# # # # # # # # # # # #     def firstpop(self, value):
+# # # # # # # # # # # #         if self.length == 0: 
 # # # # # # # # # # # #             return None
 # # # # # # # # # # # #         temp = self.head
 # # # # # # # # # # # #         self.head = self.head.next
-# # # # # # # # # # # #         temp.next = None
+# # # # # # # # # # # #         temp.next
 # # # # # # # # # # # #         self.length -= 1
 # # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # # #             self.tail = None
-# # # # # # # # # # # #         return temp
+# # # # # # # # # # # #         return temp 
     
 # # # # # # # # # # # #     def get(self, index):
 # # # # # # # # # # # #         if index < 0 or index > self.length:
-# # # # # # # # # # # #             return None 
-# # # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # # #             return None
+# # # # # # # # # # # #         temp = self.head
 # # # # # # # # # # # #         for _ in range(index):
-# # # # # # # # # # # #             temp = temp.next
+# # # # # # # # # # # #             temp = temp.value
 # # # # # # # # # # # #         return temp
-
     
+# # # # # # # # # # # #     def set(self, index, value):
+# # # # # # # # # # # #         temp = self.get(index)
+# # # # # # # # # # # #         if temp.next:
+# # # # # # # # # # # #             temp.value = value
+# # # # # # # # # # # #             return True
+# # # # # # # # # # # #         return False
     
-
-# # # # # # # # # # # # my_list = LinkedList(0)
-
-# # # # # # # # # # # # my_list.append(1) 
-# # # # # # # # # # # # my_list.append(2)
-# # # # # # # # # # # # my_list.prepand(3)
-# # # # # # # # # # # # my_list.pop()
-# # # # # # # # # # # # my_list.popfirst()
-# # # # # # # # # # # # my_list.print_list()
+# # # # # # # # # # # #     def insert(self, index, value):
+# # # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # # #             return False
+# # # # # # # # # # # #         if index == 0:
+# # # # # # # # # # # #             return self.prepand(value)
+# # # # # # # # # # # #         if index == self.length:
+# # # # # # # # # # # #             return self.append(value)
+# # # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # # #         temp = self.get(index - 1)
+# # # # # # # # # # # #         new_node.next = temp
+# # # # # # # # # # # #         temp = temp.next
+# # # # # # # # # # # #         self.length += 1
+# # # # # # # # # # # #         return True
 
 
 # # # # # # # # # # # class Node:
@@ -107,40 +520,40 @@
 # # # # # # # # # # #             self.tail.next = new_node
 # # # # # # # # # # #             self.tail = new_node
 # # # # # # # # # # #         self.length += 1
-# # # # # # # # # # #         return True
+# # # # # # # # # # #         return True 
     
 # # # # # # # # # # #     def print_list(self):
-# # # # # # # # # # #         temp = self.head 
+# # # # # # # # # # #         temp = self.head
 # # # # # # # # # # #         while temp is not None:
 # # # # # # # # # # #             print(temp.value)
 # # # # # # # # # # #             temp = temp.next
-
-# # # # # # # # # # #     def pop(self):
+        
+# # # # # # # # # # #     def pop(self, value):
 # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # #             return None
-# # # # # # # # # # #         temp = self.head 
-# # # # # # # # # # #         pre = self.head 
+# # # # # # # # # # #         temp = self.head
+# # # # # # # # # # #         pre = self.head
 # # # # # # # # # # #         while(temp.next):
-# # # # # # # # # # #             pre = temp 
+# # # # # # # # # # #             pre = temp
 # # # # # # # # # # #             temp = temp.next
-# # # # # # # # # # #         self.tail = pre 
+# # # # # # # # # # #         self.tail = pre
 # # # # # # # # # # #         self.tail.next = None
 # # # # # # # # # # #         self.length -= 1
 # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # #             self.head = None
 # # # # # # # # # # #             self.tail = None
-# # # # # # # # # # #         return temp
+# # # # # # # # # # #         return temp 
     
 # # # # # # # # # # #     def prepand(self, value):
 # # # # # # # # # # #         new_node = Node(value)
 # # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # # #             self.head = new_node
-# # # # # # # # # # #             self.head = new_node
+# # # # # # # # # # #             self.tail = new_node
 # # # # # # # # # # #         else:
 # # # # # # # # # # #             new_node.next = self.head
 # # # # # # # # # # #             self.head = new_node
 # # # # # # # # # # #         self.length += 1
-# # # # # # # # # # #         return True 
+# # # # # # # # # # #         return True
     
 # # # # # # # # # # #     def popfirst(self):
 # # # # # # # # # # #         if self.length == 0:
@@ -158,9 +571,44 @@
 # # # # # # # # # # #             return None
 # # # # # # # # # # #         temp = self.head
 # # # # # # # # # # #         for _ in range(index):
-# # # # # # # # # # #             temp = temp.next 
+# # # # # # # # # # #             temp = temp.value
 # # # # # # # # # # #         return temp 
-
+    
+# # # # # # # # # # #     def set(self, index, value):
+# # # # # # # # # # #         temp = self.get(index)
+# # # # # # # # # # #         if temp.next:
+# # # # # # # # # # #             temp.value = value
+# # # # # # # # # # #             return True
+# # # # # # # # # # #         return False
+    
+# # # # # # # # # # #     def insert(self, index, value):
+# # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # #             return False
+# # # # # # # # # # #         if index == 0:
+# # # # # # # # # # #             return self.prepand(value)
+# # # # # # # # # # #         if index == self.length:
+# # # # # # # # # # #             return self.append(value)
+# # # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # # #         temp = self.get(index - 1)
+# # # # # # # # # # #         new_node.next = temp
+# # # # # # # # # # #         temp = temp.next
+# # # # # # # # # # #         self.length += 1
+# # # # # # # # # # #         return temp
+    
+# # # # # # # # # # #     def remove(self, index):
+# # # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # # #             return None
+# # # # # # # # # # #         if index == 0:
+# # # # # # # # # # #             return self.popfirst()
+# # # # # # # # # # #         if index == self.length:
+# # # # # # # # # # #             return self.pop()
+# # # # # # # # # # #         pre = self.get(index - 1)
+# # # # # # # # # # #         temp = pre.next
+# # # # # # # # # # #         pre.next = temp.next
+# # # # # # # # # # #         temp.next = None
+# # # # # # # # # # #         self.length -= 1
+# # # # # # # # # # #         return temp
+    
 # # # # # # # # # # class Node:
 # # # # # # # # # #     def __init__(self, value):
 # # # # # # # # # #         self.value = value
@@ -184,12 +632,11 @@
 # # # # # # # # # #         self.length += 1
 # # # # # # # # # #         return True
     
-
 # # # # # # # # # #     def print_list(self):
 # # # # # # # # # #         temp = self.head
 # # # # # # # # # #         while temp is not None:
 # # # # # # # # # #             print(temp.value)
-# # # # # # # # # #             temp = temp.next 
+# # # # # # # # # #             temp = temp.next
 
 # # # # # # # # # #     def pop(self):
 # # # # # # # # # #         if self.length == 0:
@@ -216,12 +663,12 @@
 # # # # # # # # # #             new_node.next = self.head
 # # # # # # # # # #             self.head = new_node
 # # # # # # # # # #         self.length += 1
-# # # # # # # # # #         return True 
+# # # # # # # # # #         return True
     
-# # # # # # # # # #     def firstpop(self):
+# # # # # # # # # #     def popfirst(self):
 # # # # # # # # # #         if self.length == 0:
 # # # # # # # # # #             return None
-# # # # # # # # # #         temp = self.head 
+# # # # # # # # # #         temp = self.head
 # # # # # # # # # #         self.head = self.head.next
 # # # # # # # # # #         temp.next = None
 # # # # # # # # # #         self.length -= 1
@@ -232,19 +679,46 @@
 # # # # # # # # # #     def get(self, index):
 # # # # # # # # # #         if index < 0 or index > self.length:
 # # # # # # # # # #             return None
-# # # # # # # # # #         temp = self.head
+# # # # # # # # # #         temp = self.length 
 # # # # # # # # # #         for _ in range(index):
 # # # # # # # # # #             temp = temp.next
 # # # # # # # # # #         return temp
     
 # # # # # # # # # #     def set(self, index, value):
 # # # # # # # # # #         temp = self.get(index)
-# # # # # # # # # #         if temp:
+# # # # # # # # # #         if temp.next:
 # # # # # # # # # #             temp.value = value
 # # # # # # # # # #             return True
 # # # # # # # # # #         return False
-
-
+    
+# # # # # # # # # #     def insert(self, index, value):
+# # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # #             return False
+# # # # # # # # # #         if index == 0:
+# # # # # # # # # #             return self.prepand(value)
+# # # # # # # # # #         if index == self.length:
+# # # # # # # # # #             return self.append(value)
+# # # # # # # # # #         new_node = Node(value)
+# # # # # # # # # #         temp = self.get(index - 1)
+# # # # # # # # # #         self.head.next = self.head
+# # # # # # # # # #         temp = temp.next
+# # # # # # # # # #         self.length += 1
+# # # # # # # # # #         return temp
+    
+# # # # # # # # # #     def remove(self, index, value):
+# # # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # # #             return False
+# # # # # # # # # #         if index == 0:
+# # # # # # # # # #             return self.popfirst(value)
+# # # # # # # # # #         if index == self.length:
+# # # # # # # # # #             return self.pop(value)
+# # # # # # # # # #         pre = self.get(index - 1)
+# # # # # # # # # #         temp = pre.next
+# # # # # # # # # #         pre.next = temp.next
+# # # # # # # # # #         temp.next = None
+# # # # # # # # # #         self.length -= 1
+# # # # # # # # # #         return temp  
+        
 # # # # # # # # # class Node:
 # # # # # # # # #     def __init__(self, value):
 # # # # # # # # #         self.value = value
@@ -265,20 +739,19 @@
 # # # # # # # # #         else:
 # # # # # # # # #             self.tail.next = new_node
 # # # # # # # # #             self.tail = new_node
-# # # # # # # # #         self.length += 1
 # # # # # # # # #         return True
     
 # # # # # # # # #     def print_list(self):
 # # # # # # # # #         temp = self.head
 # # # # # # # # #         while temp is not None:
 # # # # # # # # #             print(temp.value)
-# # # # # # # # #             temp = temp.next
+# # # # # # # # #             temp = temp.next 
 
 # # # # # # # # #     def pop(self):
 # # # # # # # # #         if self.length == 0:
 # # # # # # # # #             return None
 # # # # # # # # #         temp = self.head
-# # # # # # # # #         pre = self.head
+# # # # # # # # #         pre = self.head 
 # # # # # # # # #         while(temp.next):
 # # # # # # # # #             pre = temp
 # # # # # # # # #             temp = temp.next
@@ -288,38 +761,48 @@
 # # # # # # # # #         if self.length == 0:
 # # # # # # # # #             self.head = None
 # # # # # # # # #             self.tail = None
-# # # # # # # # #         return temp 
+# # # # # # # # #         return temp
     
+
 # # # # # # # # #     def prepand(self, value):
 # # # # # # # # #         new_node = Node(value)
-# # # # # # # # #         if self.length == 0: 
+# # # # # # # # #         if self.lenght == 0:
 # # # # # # # # #             self.head = new_node
 # # # # # # # # #             self.tail = new_node
 # # # # # # # # #         else:
 # # # # # # # # #             new_node.next = self.head
 # # # # # # # # #             self.head = new_node
 # # # # # # # # #         self.length += 1
-# # # # # # # # #         return True
+# # # # # # # # #         return True 
     
 # # # # # # # # #     def popfirst(self):
 # # # # # # # # #         if self.length == 0:
 # # # # # # # # #             return None
-# # # # # # # # #         temp = self.head 
-# # # # # # # # #         self.head = self.head.next
+# # # # # # # # #         temp = self.head
+# # # # # # # # #         self.head.next = temp.next 
 # # # # # # # # #         temp.next = None
 # # # # # # # # #         self.length -= 1
 # # # # # # # # #         if self.length == 0:
 # # # # # # # # #             self.tail = None
-# # # # # # # # #         return temp
-
+# # # # # # # # #         return temp 
+    
 # # # # # # # # #     def get(self, index):
-# # # # # # # # #         if index< 0 or index > self.length:
+# # # # # # # # #         if index < 0 or index > self.length:
 # # # # # # # # #             return None
 # # # # # # # # #         temp = self.head
 # # # # # # # # #         for _ in range(index):
 # # # # # # # # #             temp = temp.next
 # # # # # # # # #         return temp
-
+    
+# # # # # # # # #     def set(self, index, value):
+# # # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # # #             return None
+# # # # # # # # #         temp = self.get(index)
+# # # # # # # # #         if temp.next:
+# # # # # # # # #             temp.value = value 
+# # # # # # # # #             return True
+# # # # # # # # #         return False 
+    
 # # # # # # # # #     def insert(self, index, value):
 # # # # # # # # #         if index < 0 or index > self.length:
 # # # # # # # # #             return False
@@ -329,18 +812,17 @@
 # # # # # # # # #             return self.append(value)
 # # # # # # # # #         new_node = Node(value)
 # # # # # # # # #         temp = self.get(index - 1)
-# # # # # # # # #         new_node.next = temp
+# # # # # # # # #         self.head.next = self.head
 # # # # # # # # #         temp = temp.next
 # # # # # # # # #         self.length += 1
-# # # # # # # # #         return True
-
+# # # # # # # # #         return temp 
 
 # # # # # # # # class Node:
 # # # # # # # #     def __init__(self, value):
 # # # # # # # #         self.value = value
 # # # # # # # #         self.next = None
 
-# # # # # # # # class LinkedList:
+# # # # # # # # class Linkedlist:
 # # # # # # # #     def __init__(self, value):
 # # # # # # # #         new_node = Node(value)
 # # # # # # # #         self.head = new_node
@@ -358,13 +840,7 @@
 # # # # # # # #         self.length += 1
 # # # # # # # #         return True
     
-# # # # # # # #     def print_list(self):
-# # # # # # # #         temp = self.head
-# # # # # # # #         while temp is not None:
-# # # # # # # #             print(temp.value)
-# # # # # # # #             temp = temp.next
-
-# # # # # # # #     def pop(self, value):
+# # # # # # # #     def pop(self):
 # # # # # # # #         if self.length == 0:
 # # # # # # # #             return None
 # # # # # # # #         temp = self.head
@@ -372,7 +848,7 @@
 # # # # # # # #         while(temp.next):
 # # # # # # # #             pre = temp
 # # # # # # # #             temp = temp.next
-# # # # # # # #         self.tail = pre
+# # # # # # # #         pre = self.tail
 # # # # # # # #         self.tail.next = None
 # # # # # # # #         self.length -= 1
 # # # # # # # #         if self.length == 0:
@@ -380,6 +856,12 @@
 # # # # # # # #             self.tail = None
 # # # # # # # #         return temp 
     
+# # # # # # # #     def print_list(self):
+# # # # # # # #         temp = self.head
+# # # # # # # #         while temp is not None:
+# # # # # # # #             print(temp.value)
+# # # # # # # #             temp = temp.next
+
 # # # # # # # #     def prepand(self, value):
 # # # # # # # #         new_node = Node(value)
 # # # # # # # #         if self.length == 0:
@@ -389,19 +871,32 @@
 # # # # # # # #             new_node.next = self.head
 # # # # # # # #             self.head = new_node
 # # # # # # # #         self.length += 1
-# # # # # # # #         return True 
+# # # # # # # #         return True
     
-# # # # # # # #     def firstpop(self):
+# # # # # # # #     def popfirst(self):
 # # # # # # # #         if self.length == 0:
 # # # # # # # #             return None
 # # # # # # # #         temp = self.head
-# # # # # # # #         self.head = self.head.next
+# # # # # # # #         self.head.next = temp.next
 # # # # # # # #         temp.next = None
 # # # # # # # #         self.length -= 1
 # # # # # # # #         if self.length == 0:
 # # # # # # # #             self.tail = None
 # # # # # # # #         return temp
     
+# # # # # # # #     def get(self, index):
+# # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # #             return None
+# # # # # # # #         temp = self.head
+# # # # # # # #         for _ in range(index):
+# # # # # # # #             temp = temp.next
+# # # # # # # #         return temp
+    
+# # # # # # # #     def set(self, index, value):
+# # # # # # # #         if index < 0 or index > self.length:
+# # # # # # # #             return None
+        
+
 # # # # # # # class Node:
 # # # # # # #     def __init__(self, value):
 # # # # # # #         self.value = value
@@ -423,7 +918,7 @@
 # # # # # # #             self.tail.next = new_node
 # # # # # # #             self.tail = new_node
 # # # # # # #         self.length += 1
-# # # # # # #         return True
+# # # # # # #         return True 
     
 # # # # # # #     def print_list(self):
 # # # # # # #         temp = self.head
@@ -437,17 +932,17 @@
 # # # # # # #         temp = self.head
 # # # # # # #         pre = self.head
 # # # # # # #         while(temp.next):
-# # # # # # #             pre = temp
+# # # # # # #             pre = temp 
 # # # # # # #             temp = temp.next
-# # # # # # #         self.tail = pre
-# # # # # # #         self.tail.next = None
+# # # # # # #         self.temp = pre
+# # # # # # #         self.temp.next = None
+# # # # # # #         self.length -= 1
 # # # # # # #         if self.length == 0:
 # # # # # # #             self.head = None
 # # # # # # #             self.tail = None
-# # # # # # #         self.length -= 1
 # # # # # # #         return temp
     
-# # # # # # #     def prepand(self, value):
+# # # # # # #     def prepend(self, value):
 # # # # # # #         new_node = Node(value)
 # # # # # # #         if self.length == 0:
 # # # # # # #             self.head = new_node
@@ -456,49 +951,64 @@
 # # # # # # #             new_node.next = self.head
 # # # # # # #             self.head = new_node
 # # # # # # #         self.length += 1
-# # # # # # #         return True
+# # # # # # #         return True 
     
-# # # # # # #     def firstpop(self, value):
-# # # # # # #         if self.length == 0: 
+# # # # # # #     def popfirst(self):
+# # # # # # #         if self.length == 0:
 # # # # # # #             return None
 # # # # # # #         temp = self.head
 # # # # # # #         self.head = self.head.next
-# # # # # # #         temp.next
+# # # # # # #         temp.next = None
 # # # # # # #         self.length -= 1
-# # # # # # #         if self.length == 0:
+# # # # # # #         if self.lenght == 0:
 # # # # # # #             self.tail = None
-# # # # # # #         return temp 
+# # # # # # #         return temp
     
 # # # # # # #     def get(self, index):
-# # # # # # #         if index < 0 or index > self.length:
+# # # # # # #         if index < 0 or index >= self.length:
 # # # # # # #             return None
 # # # # # # #         temp = self.head
 # # # # # # #         for _ in range(index):
-# # # # # # #             temp = temp.value
-# # # # # # #         return temp
+# # # # # # #             temp = temp.next
+# # # # # # #         return temp.value
     
 # # # # # # #     def set(self, index, value):
+# # # # # # #         if index < 0 or index > self.length:
+# # # # # # #              return None
 # # # # # # #         temp = self.get(index)
-# # # # # # #         if temp.next:
+# # # # # # #         if temp:
 # # # # # # #             temp.value = value
-# # # # # # #             return True
+# # # # # # #             return True 
 # # # # # # #         return False
     
 # # # # # # #     def insert(self, index, value):
-# # # # # # #         if index < 0 or index > self.length:
+# # # # # # #         if index <  0 or index >= self.length: 
 # # # # # # #             return False
-# # # # # # #         if index == 0:
+# # # # # # #         if self.length == 0:
 # # # # # # #             return self.prepand(value)
-# # # # # # #         if index == self.length:
+# # # # # # #         if self.length == self.length:
 # # # # # # #             return self.append(value)
 # # # # # # #         new_node = Node(value)
 # # # # # # #         temp = self.get(index - 1)
-# # # # # # #         new_node.next = temp
-# # # # # # #         temp = temp.next
-# # # # # # #         self.length += 1
-# # # # # # #         return True
-
-
+# # # # # # #         new_node.next = temp.next
+# # # # # # #         temp.next = new_node
+# # # # # # #         self.length += 1 
+# # # # # # #         return True 
+    
+# # # # # # #     def remove(self, index):
+# # # # # # #         if index < 0 or index >= self.length:
+# # # # # # #             return None
+# # # # # # #         if index == 0:
+# # # # # # #             return self.popfirst()
+# # # # # # #         if index == self.lenght - 1:
+# # # # # # #             return self.pop()
+# # # # # # #         prev = self.get(index - 1)
+# # # # # # #         temp = prev.next
+# # # # # # #         prev.next = temp.next 
+# # # # # # #         temp.next = None
+# # # # # # #         self.length -= 1
+# # # # # # #         return temp
+    
 # # # # # # class Node:
 # # # # # #     def __init__(self, value):
 # # # # # #         self.value = value
@@ -522,13 +1032,7 @@
 # # # # # #         self.length += 1
 # # # # # #         return True 
     
-# # # # # #     def print_list(self):
-# # # # # #         temp = self.head
-# # # # # #         while temp is not None:
-# # # # # #             print(temp.value)
-# # # # # #             temp = temp.next
-        
-# # # # # #     def pop(self, value):
+# # # # # #     def pop(self):
 # # # # # #         if self.length == 0:
 # # # # # #             return None
 # # # # # #         temp = self.head
@@ -544,7 +1048,13 @@
 # # # # # #             self.tail = None
 # # # # # #         return temp 
     
-# # # # # #     def prepand(self, value):
+# # # # # #     def print_list(self):
+# # # # # #         temp = self.head
+# # # # # #         while temp is not None:
+# # # # # #             print(temp.value)
+# # # # # #             temp = temp.next
+
+# # # # # #     def prepend(self, value):
 # # # # # #         new_node = Node(value)
 # # # # # #         if self.length == 0:
 # # # # # #             self.head = new_node
@@ -553,7 +1063,7 @@
 # # # # # #             new_node.next = self.head
 # # # # # #             self.head = new_node
 # # # # # #         self.length += 1
-# # # # # #         return True
+# # # # # #         return True 
     
 # # # # # #     def popfirst(self):
 # # # # # #         if self.length == 0:
@@ -564,62 +1074,19 @@
 # # # # # #         self.length -= 1
 # # # # # #         if self.length == 0:
 # # # # # #             self.tail = None
-# # # # # #         return temp
-    
-# # # # # #     def get(self, index):
-# # # # # #         if index < 0 or index > self.length:
-# # # # # #             return None
-# # # # # #         temp = self.head
-# # # # # #         for _ in range(index):
-# # # # # #             temp = temp.value
-# # # # # #         return temp 
-    
-# # # # # #     def set(self, index, value):
-# # # # # #         temp = self.get(index)
-# # # # # #         if temp.next:
-# # # # # #             temp.value = value
-# # # # # #             return True
-# # # # # #         return False
-    
-# # # # # #     def insert(self, index, value):
-# # # # # #         if index < 0 or index > self.length:
-# # # # # #             return False
-# # # # # #         if index == 0:
-# # # # # #             return self.prepand(value)
-# # # # # #         if index == self.length:
-# # # # # #             return self.append(value)
-# # # # # #         new_node = Node(value)
-# # # # # #         temp = self.get(index - 1)
-# # # # # #         new_node.next = temp
-# # # # # #         temp = temp.next
-# # # # # #         self.length += 1
-# # # # # #         return temp
-    
-# # # # # #     def remove(self, index):
-# # # # # #         if index < 0 or index > self.length:
-# # # # # #             return None
-# # # # # #         if index == 0:
-# # # # # #             return self.popfirst()
-# # # # # #         if index == self.length:
-# # # # # #             return self.pop()
-# # # # # #         pre = self.get(index - 1)
-# # # # # #         temp = pre.next
-# # # # # #         pre.next = temp.next
-# # # # # #         temp.next = None
-# # # # # #         self.length -= 1
-# # # # # #         return temp
-    
+# # # # # #         return None
+
 # # # # # class Node:
 # # # # #     def __init__(self, value):
 # # # # #         self.value = value
 # # # # #         self.next = None
 
-# # # # # class LinkedList:
+# # # # # class Linkedlist:
 # # # # #     def __init__(self, value):
 # # # # #         new_node = Node(value)
 # # # # #         self.head = new_node
 # # # # #         self.tail = new_node
-# # # # #         self.length = 1
+# # # # #         self.length = 1 
 
 # # # # #     def append(self, value):
 # # # # #         new_node = Node(value)
@@ -630,19 +1097,19 @@
 # # # # #             self.tail.next = new_node
 # # # # #             self.tail = new_node
 # # # # #         self.length += 1
-# # # # #         return True
+# # # # #         return True 
     
 # # # # #     def print_list(self):
-# # # # #         temp = self.head
+# # # # #         temp = self.head 
 # # # # #         while temp is not None:
 # # # # #             print(temp.value)
-# # # # #             temp = temp.next
+# # # # #             temp = temp.next 
 
 # # # # #     def pop(self):
 # # # # #         if self.length == 0:
 # # # # #             return None
 # # # # #         temp = self.head
-# # # # #         pre = self.head
+# # # # #         pre = self.head 
 # # # # #         while(temp.next):
 # # # # #             pre = temp
 # # # # #             temp = temp.next
@@ -654,7 +1121,7 @@
 # # # # #             self.tail = None
 # # # # #         return temp
     
-# # # # #     def prepand(self, value):
+# # # # #     def prepend(self, value):
 # # # # #         new_node = Node(value)
 # # # # #         if self.length == 0:
 # # # # #             self.head = new_node
@@ -674,57 +1141,43 @@
 # # # # #         self.length -= 1
 # # # # #         if self.length == 0:
 # # # # #             self.tail = None
-# # # # #         return temp
+# # # # #         return temp 
     
 # # # # #     def get(self, index):
-# # # # #         if index < 0 or index > self.length:
+# # # # #         if index < 0 or index >= self.length:
 # # # # #             return None
-# # # # #         temp = self.length 
+# # # # #         temp = self.head
 # # # # #         for _ in range(index):
 # # # # #             temp = temp.next
-# # # # #         return temp
+# # # # #         return temp.value
     
 # # # # #     def set(self, index, value):
 # # # # #         temp = self.get(index)
-# # # # #         if temp.next:
+# # # # #         if temp:
 # # # # #             temp.value = value
 # # # # #             return True
 # # # # #         return False
     
 # # # # #     def insert(self, index, value):
-# # # # #         if index < 0 or index > self.length:
+# # # # #         if index < 0 or index >= self.length:
 # # # # #             return False
 # # # # #         if index == 0:
-# # # # #             return self.prepand(value)
+# # # # #             return self.prepend(value)
 # # # # #         if index == self.length:
 # # # # #             return self.append(value)
 # # # # #         new_node = Node(value)
 # # # # #         temp = self.get(index - 1)
-# # # # #         self.head.next = self.head
-# # # # #         temp = temp.next
+# # # # #         new_node.next = temp.next
+# # # # #         temp.next = new_node
 # # # # #         self.length += 1
-# # # # #         return temp
-    
-# # # # #     def remove(self, index, value):
-# # # # #         if index < 0 or index > self.length:
-# # # # #             return False
-# # # # #         if index == 0:
-# # # # #             return self.popfirst(value)
-# # # # #         if index == self.length:
-# # # # #             return self.pop(value)
-# # # # #         pre = self.get(index - 1)
-# # # # #         temp = pre.next
-# # # # #         pre.next = temp.next
-# # # # #         temp.next = None
-# # # # #         self.length -= 1
-# # # # #         return temp  
-        
+# # # # #         return True
+
 # # # # class Node:
-# # # #     def __init__(self, value):
+# # # #     def __init(self, value):
 # # # #         self.value = value
 # # # #         self.next = None
 
-# # # # class LinkedList:
+# # # # class Linkedlist:
 # # # #     def __init__(self, value):
 # # # #         new_node = Node(value)
 # # # #         self.head = new_node
@@ -739,38 +1192,38 @@
 # # # #         else:
 # # # #             self.tail.next = new_node
 # # # #             self.tail = new_node
-# # # #         return True
+# # # #         self.length += 1
+# # # #         return True 
     
 # # # #     def print_list(self):
 # # # #         temp = self.head
 # # # #         while temp is not None:
 # # # #             print(temp.value)
-# # # #             temp = temp.next 
+# # # #             temp = temp.next
 
 # # # #     def pop(self):
 # # # #         if self.length == 0:
 # # # #             return None
 # # # #         temp = self.head
-# # # #         pre = self.head 
+# # # #         pre = self.head
 # # # #         while(temp.next):
 # # # #             pre = temp
 # # # #             temp = temp.next
-# # # #         self.tail = pre
-# # # #         self.tail.next = None
+# # # #         self.temp = pre
+# # # #         self.temp.next = None
 # # # #         self.length -= 1
 # # # #         if self.length == 0:
 # # # #             self.head = None
 # # # #             self.tail = None
-# # # #         return temp
+# # # #         return temp 
     
-
-# # # #     def prepand(self, value):
+# # # #     def prepend(self, value):
 # # # #         new_node = Node(value)
-# # # #         if self.lenght == 0:
+# # # #         if self.length == 0:
 # # # #             self.head = new_node
 # # # #             self.tail = new_node
 # # # #         else:
-# # # #             new_node.next = self.head
+# # # #             new_node.next = self.head 
 # # # #             self.head = new_node
 # # # #         self.length += 1
 # # # #         return True 
@@ -779,7 +1232,7 @@
 # # # #         if self.length == 0:
 # # # #             return None
 # # # #         temp = self.head
-# # # #         self.head.next = temp.next 
+# # # #         self.head = self.head.next 
 # # # #         temp.next = None
 # # # #         self.length -= 1
 # # # #         if self.length == 0:
@@ -787,36 +1240,48 @@
 # # # #         return temp 
     
 # # # #     def get(self, index):
-# # # #         if index < 0 or index > self.length:
+# # # #         if index < 0 or index >= self.length:
 # # # #             return None
-# # # #         temp = self.head
+# # # #         temp = self.head 
 # # # #         for _ in range(index):
 # # # #             temp = temp.next
-# # # #         return temp
+# # # #         return temp.value
     
-# # # #     def set(self, index, value):
-# # # #         if index < 0 or index > self.length:
-# # # #             return None
+# # # #     def set(self, value, index):
 # # # #         temp = self.get(index)
 # # # #         if temp.next:
-# # # #             temp.value = value 
+# # # #             temp.value = value
 # # # #             return True
 # # # #         return False 
-    
-# # # #     def insert(self, index, value):
-# # # #         if index < 0 or index > self.length:
-# # # #             return False
-# # # #         if index == 0:
-# # # #             return self.prepand(value)
-# # # #         if index == self.length:
-# # # #             return self.append(value)
-# # # #         new_node = Node(value)
-# # # #         temp = self.get(index - 1)
-# # # #         self.head.next = self.head
-# # # #         temp = temp.next
-# # # #         self.length += 1
-# # # #         return temp 
 
+# # # #     def insert(self, value, index):
+# # # #          if index < 0 or index >= self.length:
+# # # #              return False
+# # # #          if index == 0:
+# # # #              return self.prepend(value)
+# # # #          if index == self.length:
+# # # #              return self.append(value)
+# # # #          new_node = Node(value)
+# # # #          temp = self.get(index - 1)
+# # # #          new_node.next = temp.next
+# # # #          temp.next = new_node
+# # # #          self.length += 1
+# # # #          return True 
+    
+# # # #     def remove(self, index):
+# # # #         if index < 0 or index >= self.length:
+# # # #             return None
+# # # #         if index == 0:
+# # # #             return self.popfirst()
+# # # #         if index == self.length:
+# # # #             return self.pop()
+# # # #         prev = self.get(index - 1)
+# # # #         temp = prev.next
+# # # #         prev.next = temp.next
+# # # #         temp.next = None
+# # # #         self.length -= 1
+# # # #         return temp
+    
 # # # class Node:
 # # #     def __init__(self, value):
 # # #         self.value = value
@@ -838,23 +1303,7 @@
 # # #             self.tail.next = new_node
 # # #             self.tail = new_node
 # # #         self.length += 1
-# # #         return True
-    
-# # #     def pop(self):
-# # #         if self.length == 0:
-# # #             return None
-# # #         temp = self.head
-# # #         pre = self.head
-# # #         while(temp.next):
-# # #             pre = temp
-# # #             temp = temp.next
-# # #         pre = self.tail
-# # #         self.tail.next = None
-# # #         self.length -= 1
-# # #         if self.length == 0:
-# # #             self.head = None
-# # #             self.tail = None
-# # #         return temp 
+# # #         return True 
     
 # # #     def print_list(self):
 # # #         temp = self.head
@@ -862,7 +1311,23 @@
 # # #             print(temp.value)
 # # #             temp = temp.next
 
-# # #     def prepand(self, value):
+# # #     def pop(self):
+# # #         if self.length == 0:
+# # #             return None
+# # #         temp = self.head
+# # #         pre = self.head
+# # #         while(temp.next):
+# # #             pre = temp 
+# # #             temp = temp.next
+# # #         self.tail = pre
+# # #         self.tail.next = None
+# # #         self.length -= 1
+# # #         if self.length == 0:
+# # #             self.head = None
+# # #             self.tail = None
+# # #         return temp
+    
+# # #     def prepend(self, value):
 # # #         new_node = Node(value)
 # # #         if self.length == 0:
 # # #             self.head = new_node
@@ -877,7 +1342,7 @@
 # # #         if self.length == 0:
 # # #             return None
 # # #         temp = self.head
-# # #         self.head.next = temp.next
+# # #         self.head = self.head.next
 # # #         temp.next = None
 # # #         self.length -= 1
 # # #         if self.length == 0:
@@ -885,30 +1350,62 @@
 # # #         return temp
     
 # # #     def get(self, index):
-# # #         if index < 0 or index > self.length:
+# # #         if index < 0 or index >= self.length:
 # # #             return None
 # # #         temp = self.head
 # # #         for _ in range(index):
 # # #             temp = temp.next
-# # #         return temp
+# # #         return temp.value
     
 # # #     def set(self, index, value):
-# # #         if index < 0 or index > self.length:
+# # #         temp = self.get(index)
+# # #         if temp.next:
+# # #             temp.value = value
+# # #             return True
+# # #         return False
+    
+# # #     def insert(self, index, value):
+# # #         if index < 0 or index >= self.length:
+# # #             return False
+# # #         if index == 0:
+# # #             return self.prepend(value)
+# # #         if index == self.length:
+# # #             return self.append(value)
+# # #         new_node = Node(value)
+# # #         temp = self.get(index - 1)
+# # #         new_node.next = temp.next 
+# # #         temp = new_node
+# # #         self.length += 1
+# # #         return True 
+    
+# # #     def remove(self, index):
+# # #         if index < 0 or index >= self.length:
 # # #             return None
-        
+# # #         if index == 0:
+# # #             return self.popfirst()
+# # #         if index == self.length:
+# # #             return self.pop()
+# # #         prev = self.get(index - 1)
+# # #         temp = prev.next
+# # #         prev.next = temp.next
+# # #         temp.next = None
+# # #         self.length -= 1
+# # #         return temp
+    
+# # #     def reverse(self,)
 
 # # class Node:
 # #     def __init__(self, value):
 # #         self.value = value
 # #         self.next = None
 
-# # class LinkedList:
+# # class Linkedlist:
 # #     def __init__(self, value):
 # #         new_node = Node(value)
-# #         self.head = new_node
+# #         self.hed = new_node
 # #         self.tail = new_node
 # #         self.length = 1
-
+    
 # #     def append(self, value):
 # #         new_node = Node(value)
 # #         if self.length == 0:
@@ -918,7 +1415,7 @@
 # #             self.tail.next = new_node
 # #             self.tail = new_node
 # #         self.length += 1
-# #         return True 
+# #         return True
     
 # #     def print_list(self):
 # #         temp = self.head
@@ -932,15 +1429,15 @@
 # #         temp = self.head
 # #         pre = self.head
 # #         while(temp.next):
-# #             pre = temp 
+# #             pre = temp
 # #             temp = temp.next
-# #         self.temp = pre
-# #         self.temp.next = None
+# #         self.tail = pre
+# #         self.tail.next = None
 # #         self.length -= 1
 # #         if self.length == 0:
 # #             self.head = None
 # #             self.tail = None
-# #         return temp
+# #         return temp 
     
 # #     def prepend(self, value):
 # #         new_node = Node(value)
@@ -951,7 +1448,7 @@
 # #             new_node.next = self.head
 # #             self.head = new_node
 # #         self.length += 1
-# #         return True 
+# #         return True
     
 # #     def popfirst(self):
 # #         if self.length == 0:
@@ -960,12 +1457,12 @@
 # #         self.head = self.head.next
 # #         temp.next = None
 # #         self.length -= 1
-# #         if self.lenght == 0:
+# #         if self.length == 0:
 # #             self.tail = None
 # #         return temp
     
 # #     def get(self, index):
-# #         if index < 0 or index >= self.length:
+# #         if index < 0 or index >= 1:
 # #             return None
 # #         temp = self.head
 # #         for _ in range(index):
@@ -973,38 +1470,36 @@
 # #         return temp.value
     
 # #     def set(self, index, value):
-# #         if index < 0 or index > self.length:
-# #              return None
 # #         temp = self.get(index)
-# #         if temp:
+# #         if temp.next:
 # #             temp.value = value
-# #             return True 
+# #             return True
 # #         return False
     
 # #     def insert(self, index, value):
-# #         if index <  0 or index >= self.length: 
+# #         if index < 0 or index >= self.length:
 # #             return False
-# #         if self.length == 0:
-# #             return self.prepand(value)
-# #         if self.length == self.length:
+# #         if index == 0:
+# #             return self.prepend(value)
+# #         if index == self.length:
 # #             return self.append(value)
 # #         new_node = Node(value)
 # #         temp = self.get(index - 1)
 # #         new_node.next = temp.next
 # #         temp.next = new_node
-# #         self.length += 1 
-# #         return True 
+# #         self.length += 1
+# #         return True
     
 # #     def remove(self, index):
 # #         if index < 0 or index >= self.length:
 # #             return None
 # #         if index == 0:
 # #             return self.popfirst()
-# #         if index == self.lenght - 1:
+# #         if index == self.length:
 # #             return self.pop()
-# #         prev = self.get(index - 1)
+# #         prev = self.get(index -1)
 # #         temp = prev.next
-# #         prev.next = temp.next 
+# #         prev.next = temp.next
 # #         temp.next = None
 # #         self.length -= 1
 # #         return temp
@@ -1030,7 +1525,7 @@
 #             self.tail.next = new_node
 #             self.tail = new_node
 #         self.length += 1
-#         return True 
+#         return True
     
 #     def pop(self):
 #         if self.length == 0:
@@ -1046,7 +1541,7 @@
 #         if self.length == 0:
 #             self.head = None
 #             self.tail = None
-#         return temp 
+#         return temp
     
 #     def print_list(self):
 #         temp = self.head
@@ -1063,7 +1558,7 @@
 #             new_node.next = self.head
 #             self.head = new_node
 #         self.length += 1
-#         return True 
+#         return True
     
 #     def popfirst(self):
 #         if self.length == 0:
@@ -1074,19 +1569,50 @@
 #         self.length -= 1
 #         if self.length == 0:
 #             self.tail = None
-#         return None
-
+#         return temp 
+    
+#     def get(self, index):
+#         if index < 0 or index >= self.length:
+#             return None
+#         temp = self.head
+#         for _ in range(index):
+#             temp = temp.next
+#         return temp.value
+    
+#     def set(self, index, value):
+#         temp = self.get(index)
+#         if self.next:
+#             self.value = value
+#             return True
+#         return False
+    
+#     def insert(self, index, value):
+#         if index < 0 or index >= self.length:
+#             return False
+#         if index == 0:
+#             return self.prepend(value)
+#         if index == self.length:
+#             return self.append(value)
+#         new_node = Node(value)
+#         temp = self.get(index - 1)
+#         new_node.next = temp.next
+#         temp.next = new_node
+#         self.length += 1
+#         return True
+    
+#     def remove(self, index):
+        
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
 
-class Linkedlist:
+class LinkedList:
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
-        self.length = 1 
+        self.length = 1
 
     def append(self, value):
         new_node = Node(value)
@@ -1103,22 +1629,19 @@ class Linkedlist:
         temp = self.head 
         while temp is not None:
             print(temp.value)
-            temp = temp.next 
+            temp = temp.value
 
     def pop(self):
         if self.length == 0:
             return None
         temp = self.head
-        pre = self.head 
+        pre = self.head
         while(temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
         self.tail.next = None
         self.length -= 1
-        if self.length == 0:
-            self.head = None
-            self.tail = None
         return temp
     
     def prepend(self, value):
@@ -1146,20 +1669,20 @@ class Linkedlist:
     def get(self, index):
         if index < 0 or index >= self.length:
             return None
-        temp = self.head
+        temp = self.head 
         for _ in range(index):
             temp = temp.next
         return temp.value
     
     def set(self, index, value):
         temp = self.get(index)
-        if temp:
+        if temp.next:
             temp.value = value
             return True
         return False
     
     def insert(self, index, value):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             return False
         if index == 0:
             return self.prepend(value)
@@ -1171,3 +1694,19 @@ class Linkedlist:
         temp.next = new_node
         self.length += 1
         return True
+    
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            return self.popfirst()
+        if index == self.length:
+            return self.pop()
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp 
+    
+    def reverse(self, value):
